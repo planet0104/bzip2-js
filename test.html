@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="bzip2.js"></script>
+</head>
+<body>
+    <script>
+        // 字符串转byte
+        function stringToBytes(str) {
+            var array = new Uint8Array(str.length);
+            for (var i = 0, l = str.length; i < l; i++) {
+                array[i] = str.charCodeAt(i);
+            }
+            return array;
+        }
+
+        var data = "hello!hello!hello!";
+        var compressed = Bzip2.compress(stringToBytes(data));
+        console.log("compressed=", compressed);
+        document.body.append("compressed="+Bzip2.decompressUtf8String(compressed));
+    </script>
+</body>
+</html>
